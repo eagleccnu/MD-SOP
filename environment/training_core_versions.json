@@ -1,0 +1,25 @@
+{
+  "snapshot_date": "2026-11-07",
+  "scope": "historical_training_core_not_full_transitive_lock",
+  "python": "3.9.20",
+  "torch": "2.5.1",
+  "torch_cuda": "11.8",
+  "cudnn": 90100,
+  "packages": {
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "pandas": "2.2.2",
+    "scipy": "1.12.0",
+    "matplotlib": "3.9.2",
+    "PyYAML": "6.0.2",
+    "biopython": "1.78",
+    "esm": null,
+    "esm-sdk": null,
+    "huggingface-hub": "0.28.1",
+    "safetensors": "0.5.2",
+    "tqdm": "4.70.0",
+    "pyarrow": "17.0.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "driver": "535.104.05"
+}

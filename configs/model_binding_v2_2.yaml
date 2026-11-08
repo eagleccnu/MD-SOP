@@ -1,0 +1,14 @@
+schema_version: '1.0'
+model_version: v2.2
+run_tag: v2_2_20261107
+status: PASS
+training_launch_ready: true
+formal_training_started: false
+model_acceptance_path: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/audits/step4_model_runtime/step4_model_runtime_acceptance_v2_2_20261107.json
+model_acceptance_sha256: 9aa4e3dd5bb937975da8b4146d725b3e6f70d0edf4cc7839a2a0f21825d86f48
+code_manifest_path: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/audits/step4_model_runtime/code_manifest_v2_2.json
+code_manifest_sha256: 907a5b950e18d5deddcab60c36db0621e0cc42c5e00a644b72c0b3ed4abfe074
+data_binding_sha256: 5991c474d1dc2423f9896f87cc4e989cfaecfa8e0609ff91f31d2d8a4668f62e
+untrained_initialization_only: true
+step5_requires_separate_explicit_launch: true
+resolved_config_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/resolved_train_v2_2.yaml

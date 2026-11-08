@@ -1,0 +1,77 @@
+{
+  "model_version": "v2.2",
+  "run_tag": "v2_2_20261107",
+  "release_prepared_date": "2026-11-08",
+  "scientific_status": "FROZEN",
+  "training_seed": 20261007,
+  "experiments": [
+    "A_MD_w1",
+    "A_MD_w15",
+    "B_SOPPE_w1",
+    "B_SOPPE_w15",
+    "C_MIX_w1",
+    "C_MIX_w15"
+  ],
+  "primary_endpoints": [
+    "md_test",
+    "soppe_test",
+    "experimental10"
+  ],
+  "primary_score_cells": 18,
+  "source_protocol_sha256": "58241e47ea718e2ca9226bd05f053b89290782175548181b2a9589e3d2843a31",
+  "source_runtime_configuration_sha256": "fcaecfc9c5451e1d050a3d55c2c56d6baae852755e5d880067b2f9dbd3f79fdf",
+  "source_data_binding_sha256": "5991c474d1dc2423f9896f87cc4e989cfaecfa8e0609ff91f31d2d8a4668f62e",
+  "label_release_sha256": "11d9f80b5d290c923c121d81665c6c71add864eaf816ec1465fb52c7574f4975",
+  "step_audits": [
+    {
+      "step": 0,
+      "source_sha256": "b0d5395802042ffcc336dd65978a58d279cead212f9615bcbe0feca7e811c93f",
+      "status": "PASS"
+    },
+    {
+      "step": 1,
+      "source_sha256": "4e0e48e513776b15af0f00630980c597338946dce7ca6223b44a2ad20aa623f4",
+      "status": "PASS"
+    },
+    {
+      "step": 2,
+      "source_sha256": "28cbb1794ad506b0bd4768bb52845330489adb159ccdb87839fd03cb23988bc9",
+      "status": "PASS"
+    },
+    {
+      "step": 3,
+      "source_sha256": "b60e2c4c05a1ad86a8f19b2958c4749836fe337c29d919cf9fbfad6dec1e65db",
+      "status": "PASS"
+    },
+    {
+      "step": 4,
+      "source_sha256": "9aa4e3dd5bb937975da8b4146d725b3e6f70d0edf4cc7839a2a0f21825d86f48",
+      "status": "PASS"
+    },
+    {
+      "step": 5,
+      "source_sha256": "bce7d8248ece0f9428e97a95d4128e056ce6a1f2aeb900e28e5418a6f4b3ceef",
+      "status": "PASS"
+    },
+    {
+      "step": 6,
+      "source_sha256": "bf5dff70ac6ebd7f68d01d0498f73038403c3c71059e968504c0cac3899e7da3",
+      "status": "PASS"
+    },
+    {
+      "step": 7,
+      "source_sha256": "6027a16a4e921f85d201d9ee208ceca94bd6ccd29d95c1f4716b1e4c2f531477",
+      "status": "PASS"
+    },
+    {
+      "step": 8,
+      "source_sha256": "ede150723f6f5b03c7b7a3868d285a13563e66cf9da92c6ebcca6524d4ba88a2",
+      "status": "PASS"
+    }
+  ],
+  "packaging_trained_or_selected_models": false,
+  "export_policy": "identical_model_tensors_without_optimizer_scheduler_RNG",
+  "source_bootstrap_and_host_manifest_excluded": true,
+  "publication_status": "PREPARED_NOT_UPLOADED",
+  "license_status": "OWNER_DECISION_PENDING"
+}

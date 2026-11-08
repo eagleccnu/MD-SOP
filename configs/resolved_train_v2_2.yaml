@@ -1,0 +1,175 @@
+schema_version: '1.0'
+step: 5
+plan_version: v2.2
+run_tag: v2_2_20261107
+protocol_id: md_sop_v2_2_20261107
+project_root: /data/jiangbin/SOPPCL/MD-SOP
+code_root: /data/jiangbin/SOPPCL/MD-SOP/code/v2_2_20261107
+model_root: /data/jiangbin/SOPPCL/MD-SOP/model/v2_2_20261107/seed_20261007
+result_root: /data/jiangbin/SOPPCL/MD-SOP/results/v2_2_20261107/development
+log_root: /data/jiangbin/SOPPCL/MD-SOP/logs/v2_2_20261107
+audit_root: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/audits
+data_access:
+  trainer_manifest: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/development/manifests/trainer_access_manifest.tsv
+  trainer_manifest_sha256: bde765b3ff9a7689255cae6fbb529c390636e2f8121cc38afb744fa656da234f
+  development_label_root: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/development/labels
+  evaluation_root: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/evaluation
+  expected_supervised_train_records:
+    md_ired: 1070
+    soppe_legacy: 2187
+  expected_validation_records:
+    md_ired: 153
+    soppe_legacy: 273
+  zero_supervision_records:
+  - SOPPCL__1zgg
+  future_manifest_binding_status: bound_from_step3
+initialization:
+  directory: /data/jiangbin/SOPPCL/MD-SOP/model/v2_1_20261007/seed_20261007/initialization
+  manifest: /data/jiangbin/SOPPCL/MD-SOP/model/v2_1_20261007/seed_20261007/initialization/initialization_manifest.json
+  common_backbone_state_sha256: eb073b92a7037d39ac5756c384ab6fc9502936a927d917896683db379c741731
+  window_1:
+    checkpoint: /data/jiangbin/SOPPCL/MD-SOP/model/v2_1_20261007/seed_20261007/initialization/initial_w1_seed_20261007.pt
+    file_sha256: 535147bfea0e8f9d60de4d63dd4ecbf66d7ccc2daf6edefd4b9fa7400b39e34e
+  window_15:
+    checkpoint: /data/jiangbin/SOPPCL/MD-SOP/model/v2_1_20261007/seed_20261007/initialization/initial_w15_seed_20261007.pt
+    file_sha256: 251ecf916fae4c06d7cdd90ef546c01c9fa07daacb871b349f3cf9b2b0b3ab58
+random_streams:
+  primary_seed: 20261007
+  model_initialization_seed: 20261007
+  md_shuffle_seed: 20261107
+  soppe_shuffle_seed: 20261207
+  dropout_seed: 20261307
+  dataloader_worker_seed: 20261407
+training:
+  optimizer: AdamW
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  precision: float32
+  smooth_l1_beta: 0.05
+  total_batch_records: 32
+  single_source_records_per_step: 32
+  mixed_md_records_per_step: 16
+  mixed_soppe_records_per_step: 16
+  steps_per_virtual_epoch: 69
+  max_virtual_epochs: 100
+  max_optimizer_steps: 6900
+  gradient_clip_global_norm: 1.0
+  num_workers: 4
+  validation_num_workers: 2
+  pin_memory: true
+  persistent_workers: true
+  progress_every_steps: 10
+  plot_every_epochs: 1
+  checkpoint_every_epochs: 1
+scheduler:
+  name: ReduceLROnPlateau
+  mode: min
+  patience: 3
+  factor: 0.5
+  min_learning_rate: 1.0e-06
+early_stopping:
+  patience_virtual_epochs: 10
+  min_delta: 0.0001
+  best_checkpoint_rule: strict_minimum_selection_metric
+  patience_reset_rule: selection_metric < early_stop_reference - min_delta
+experiments:
+  A_MD_w1:
+    train_sources:
+    - md_ired
+    validation_sources:
+    - md_ired
+    window_size: 1
+    selection_metric: md_validation_protein_record_macro_rmse
+  A_MD_w15:
+    train_sources:
+    - md_ired
+    validation_sources:
+    - md_ired
+    window_size: 15
+    selection_metric: md_validation_protein_record_macro_rmse
+  B_SOPPE_w1:
+    train_sources:
+    - soppe_legacy
+    validation_sources:
+    - soppe_legacy
+    window_size: 1
+    selection_metric: soppe_validation_protein_record_macro_rmse
+  B_SOPPE_w15:
+    train_sources:
+    - soppe_legacy
+    validation_sources:
+    - soppe_legacy
+    window_size: 15
+    selection_metric: soppe_validation_protein_record_macro_rmse
+  C_MIX_w1:
+    train_sources:
+    - md_ired
+    - soppe_legacy
+    validation_sources:
+    - md_ired
+    - soppe_legacy
+    window_size: 1
+    selection_metric: 0.5 * md_validation_macro_rmse + 0.5 * soppe_validation_macro_rmse
+  C_MIX_w15:
+    train_sources:
+    - md_ired
+    - soppe_legacy
+    validation_sources:
+    - md_ired
+    - soppe_legacy
+    window_size: 15
+    selection_metric: 0.5 * md_validation_macro_rmse + 0.5 * soppe_validation_macro_rmse
+artifacts:
+  best_checkpoint_name: best_v2_2_20261107.pt
+  last_checkpoint_name: last_v2_2_20261107.pt
+  history_name: history_v2_2_20261107.tsv
+  progress_name: progress_v2_2_20261107.json
+  run_manifest_name: run_manifest_v2_2_20261107.json
+  exposure_counts_name: exposure_counts_v2_2_20261107.json
+  curve_png_name: training_curves_v2_2_20261107.png
+  curve_svg_name: training_curves_v2_2_20261107.svg
+  validation_summary_name: best_validation_summary_v2_2_20261107.json
+initialization_policy:
+  access: read_only_original_untrained_states
+  use_trained_v2_1_weights: false
+  load_old_optimizer_or_scheduler: false
+  must_match_original_parameter_state_hashes: true
+label_versions:
+  md_ired: md_ired_5tauc_windowmean_v2_2
+  soppe_legacy: unchanged_frozen_v2_1_SOPPE_targets
+  experimental10: unchanged_709_position_historical_mask
+dataset_binding:
+  status: resolved
+  path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/data_binding_v2_2.yaml
+  reference_registry: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/manifests/v2_1_reference_registry.tsv
+  reference_registry_sha256: 412f91ecce1c77244a0db02983dd978932ee045db29a8eddab5363e48a666e79
+  required_fields:
+  - label_release_sha256
+  - trainer_manifest_sha256
+  - dataset_index_sha256
+  - feature_index_sha256
+  - data_acceptance_sha256
+  - model_acceptance_sha256
+  immutable_base_recipe: true
+  model_acceptance_sha256: 9aa4e3dd5bb937975da8b4146d725b3e6f70d0edf4cc7839a2a0f21825d86f48
+execution_gate:
+  base_recipe_is_not_directly_runnable: false
+  require_data_binding: true
+  require_step3_data_acceptance: true
+  require_step4_model_trainer_acceptance: true
+  resolved_runtime_config: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/resolved_train_v2_2.yaml
+  model_acceptance_verified: true
+  step5_launch_is_separate_user_action: true
+runtime_binding:
+  data_binding_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/data_binding_v2_2.yaml
+  data_binding_sha256: 5991c474d1dc2423f9896f87cc4e989cfaecfa8e0609ff91f31d2d8a4668f62e
+  data_access_policy_path: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/development/manifests/data_access_policy_v2_2.json
+  data_access_policy_sha256: fe09a74863efc4d4f999e494666e9aa214a173a96602c15862deda06bd187832
+  model_acceptance_sha256: 9aa4e3dd5bb937975da8b4146d725b3e6f70d0edf4cc7839a2a0f21825d86f48
+  execution_kind: formal_step5_after_explicit_launch
+  model_binding_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/model_binding_v2_2.yaml
+  model_binding_sha256: ac61f18968848c0edb23f72dbd0d7fe1556258eafb9d17e96a70e0bebe35c3d9

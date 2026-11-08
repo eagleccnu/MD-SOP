@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "run_tag": "v2_2_20261107",
+  "step": 6,
+  "no_retraining_or_epoch_reselection": true,
+  "allowed_endpoints": [
+    "md_test",
+    "soppe_test",
+    "md_test_full100ns_reference"
+  ],
+  "forbidden_endpoints": [
+    "experimental10"
+  ],
+  "endpoints": {
+    "md_test": {
+      "records": 136,
+      "unique_sequences": 123,
+      "complete_residues": 19916,
+      "eligible_residues": 18939
+    },
+    "soppe_test": {
+      "records": 273,
+      "unique_sequences": 269,
+      "complete_residues": 32675,
+      "eligible_residues": 32673
+    },
+    "md_test_full100ns_reference": {
+      "records": 136,
+      "unique_sequences": 123,
+      "complete_residues": 19916,
+      "eligible_residues": 18939
+    }
+  },
+  "inference": {
+    "batch_size": 8,
+    "precision": "float32",
+    "raw_unclipped": true,
+    "smoothing": false,
+    "calibration": false,
+    "devices": {
+      "md_test": "cuda:0",
+      "soppe_test": "cuda:1"
+    },
+    "deterministic_algorithms": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "torch_threads": 2
+  },
+  "statistics": {
+    "paired_direction": "v2.2_minus_v2.1",
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 20261008,
+    "bootstrap_unit": "frozen_joint_homology_group_with_all_its_records",
+    "CI_level": 0.95,
+    "primary_delta": "protein_record_macro",
+    "secondary_delta": "equal_weight_group_means",
+    "sign_flip_replicates": 20000,
+    "sign_flip_seed": 20261107,
+    "exact_sign_flip_max_groups": 16,
+    "sign_flip_estimator": "equal_weight_group_mean_RMSE_differences",
+    "monte_carlo_p": "plus_one",
+    "p_adjustment": "Holm across 18 prespecified RMSE version-pairs: six routes x three targets",
+    "other_metric_CIs": "descriptive_unadjusted",
+    "single_training_seed": 20261007
+  },
+  "score_compatibility_tolerance": 1e-08,
+  "control_prediction_tolerance": 1e-06
+}

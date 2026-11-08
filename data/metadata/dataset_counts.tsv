@@ -1,0 +1,8 @@
+dataset_endpoint	record_count	unique_sequence_count	full_sequence_residues	raw_label_count	qc_label_count	loss_label_count	access_scope	endpoint_kind	label_version
+experimental10	10	10	982	709	709	0	final_evaluation_only	primary	unchanged_709_position_historical_mask
+md_test	136	123	19916	18939	18939	0	final_evaluation_only	primary	md_ired_5tauc_windowmean_v2_2
+md_train	1070	928	157192	149299	149299	149299	training_or_validation	primary	md_ired_5tauc_windowmean_v2_2
+md_validation	153	133	21926	20753	20753	0	training_or_validation	primary	md_ired_5tauc_windowmean_v2_2
+soppe_test	273	269	32675	32675	32673	0	final_evaluation_only	primary	unchanged_frozen_v2_1_SOPPE_targets
+soppe_train	2188	2187	260344	260344	260191	260191	training_or_validation	primary	unchanged_frozen_v2_1_SOPPE_targets
+soppe_validation	273	270	32619	32619	32619	0	training_or_validation	primary	unchanged_frozen_v2_1_SOPPE_targets

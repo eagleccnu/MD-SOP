@@ -1,0 +1,3 @@
+# Install the matching PyTorch build first; see docs/ENVIRONMENT.md.
+torch==2.5.1
+numpy==1.26.4

@@ -1,0 +1,99 @@
+{
+  "model_version": "v2.2",
+  "run_tag": "v2_2_20261107",
+  "checkpoint_format": "md_sop_inference_v2_2",
+  "models": {
+    "A_MD_w1": {
+      "file": "checkpoints/A_MD_w1_v2.2.pt",
+      "file_sha256": "1a3c952226dbee4d64567156122e2d1b5c47f4a7a95e27fe430ef6f62d2a0d7d",
+      "bytes": 10356378,
+      "model_state_sha256": "b6d5ab6e8fc906806aded7273b77f83ee084f177f87c9d2ea8279d4bb9036d80",
+      "source_best_checkpoint_sha256": "2eec7930406130f474dbf92164f31083e5c836dbcfbbab03b9dcc4e493f97fa0",
+      "source_configuration_sha256": "fcaecfc9c5451e1d050a3d55c2c56d6baae852755e5d880067b2f9dbd3f79fdf",
+      "best_epoch": 6,
+      "window_size": 1,
+      "train_sources": [
+        "md_ired"
+      ],
+      "training_seed": 20261007,
+      "parameters": 2587069
+    },
+    "A_MD_w15": {
+      "file": "checkpoints/A_MD_w15_v2.2.pt",
+      "file_sha256": "3277a24c1fdb818ad952d66b8485a1ed6a4ca4477ac15db523986511e426fcf8",
+      "bytes": 14026422,
+      "model_state_sha256": "cc3e653787d0d300d9500b751a0d986c2603038abad3ce165e8aad9b4d1190c1",
+      "source_best_checkpoint_sha256": "86e75ed0ac007fd44f1f7dd229b7fb2a7a79c78170793211e611759a4a4744a0",
+      "source_configuration_sha256": "fcaecfc9c5451e1d050a3d55c2c56d6baae852755e5d880067b2f9dbd3f79fdf",
+      "best_epoch": 26,
+      "window_size": 15,
+      "train_sources": [
+        "md_ired"
+      ],
+      "training_seed": 20261007,
+      "parameters": 3504573
+    },
+    "B_SOPPE_w1": {
+      "file": "checkpoints/B_SOPPE_w1_v2.2.pt",
+      "file_sha256": "9b27b7cdc1baab6d2db5667f367d1df5d4aaefa3b32d0cbe9adb4ac133c010f5",
+      "bytes": 10356526,
+      "model_state_sha256": "fc0f506fff3671192e852db8a7f3f5dececbd654b70c8e41b846af5ada67c69e",
+      "source_best_checkpoint_sha256": "f9de06baefd89b853ce14d33f28ee706356734329fb8a973e995f3da50dbf09e",
+      "source_configuration_sha256": "fcaecfc9c5451e1d050a3d55c2c56d6baae852755e5d880067b2f9dbd3f79fdf",
+      "best_epoch": 20,
+      "window_size": 1,
+      "train_sources": [
+        "soppe_legacy"
+      ],
+      "training_seed": 20261007,
+      "parameters": 2587069
+    },
+    "B_SOPPE_w15": {
+      "file": "checkpoints/B_SOPPE_w15_v2.2.pt",
+      "file_sha256": "c580f3ac509fba95cfe3ae7ce5e9cb100d457180898577dfdae92637ad2898c7",
+      "bytes": 14026698,
+      "model_state_sha256": "ece8fe462c91d35b36c3a8293be3663e1a61fb5bfb02130240ba78c9398aa87c",
+      "source_best_checkpoint_sha256": "6872abbb6e75af5a60d2720e2e48361f1bee21ff83a97883e83cb0bb449f4a73",
+      "source_configuration_sha256": "fcaecfc9c5451e1d050a3d55c2c56d6baae852755e5d880067b2f9dbd3f79fdf",
+      "best_epoch": 11,
+      "window_size": 15,
+      "train_sources": [
+        "soppe_legacy"
+      ],
+      "training_seed": 20261007,
+      "parameters": 3504573
+    },
+    "C_MIX_w1": {
+      "file": "checkpoints/C_MIX_w1_v2.2.pt",
+      "file_sha256": "ffcbf8942d40c3035ec52977334000ad9d80547c87cd584ff6a75e42f4eebf0b",
+      "bytes": 10356406,
+      "model_state_sha256": "a23849882c1dc6a400d7a46a7c35a2e0058f1012e78053a8d13cdd536b7cc074",
+      "source_best_checkpoint_sha256": "679c31368a456e368603873fabdfa5b26bf2c92219d2e3ff74f7bfe4c151eb30",
+      "source_configuration_sha256": "fcaecfc9c5451e1d050a3d55c2c56d6baae852755e5d880067b2f9dbd3f79fdf",
+      "best_epoch": 17,
+      "window_size": 1,
+      "train_sources": [
+        "md_ired",
+        "soppe_legacy"
+      ],
+      "training_seed": 20261007,
+      "parameters": 2587069
+    },
+    "C_MIX_w15": {
+      "file": "checkpoints/C_MIX_w15_v2.2.pt",
+      "file_sha256": "15bef68e0196564f8cfce72ab39d59983f06c9cb3b1779b8b91d91a79ec29430",
+      "bytes": 14026450,
+      "model_state_sha256": "fc80f8482d45f0479093eed6b74d02aabcc1b679a0ee34154af8607256242518",
+      "source_best_checkpoint_sha256": "99539cd01707752eecbf73da491708067054eb990f0511f0bad3224e3f887d73",
+      "source_configuration_sha256": "fcaecfc9c5451e1d050a3d55c2c56d6baae852755e5d880067b2f9dbd3f79fdf",
+      "best_epoch": 9,
+      "window_size": 15,
+      "train_sources": [
+        "md_ired",
+        "soppe_legacy"
+      ],
+      "training_seed": 20261007,
+      "parameters": 3504573
+    }
+  }
+}

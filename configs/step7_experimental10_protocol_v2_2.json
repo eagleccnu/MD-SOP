@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "step": 7,
+  "run_tag": "v2_2_20261107",
+  "endpoint": "experimental10",
+  "protein_ids": [
+    "1pd7",
+    "1wrs",
+    "1wrt",
+    "1z9b",
+    "2jwt",
+    "2l6b",
+    "2luo",
+    "2m3o",
+    "2xdi",
+    "4aai"
+  ],
+  "chains": {
+    "1pd7": "A",
+    "1wrs": "R",
+    "1wrt": "R",
+    "1z9b": "A",
+    "2jwt": "A",
+    "2l6b": "A",
+    "2luo": "A",
+    "2m3o": "W",
+    "2xdi": "A",
+    "4aai": "A"
+  },
+  "records": 10,
+  "complete_residues": 982,
+  "scored_positions": 709,
+  "joint_homology_groups": 8,
+  "mask_registry_path": "/data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/manifests/experimental10_mask_registry_v2_2.tsv",
+  "old_comparison_root": "/data/jiangbin/SOPPCL/MD-SOP/results/v2_1_20261007/experimental10/comparison",
+  "historical_models": [
+    "historical_original_soppcl",
+    "historical_mu64_bilstm",
+    "historical_raw1310_bilstm"
+  ],
+  "original_historical_source": "/data/jiangbin/SOPPCL/model/evaluation/experimental10_three_model_comparison_v1_20260727/metrics/per_residue_predictions.tsv",
+  "historical_raw_columns": {
+    "historical_mu64_bilstm": "mu64_raw",
+    "historical_raw1310_bilstm": "raw1310_raw",
+    "historical_original_soppcl": "original_raw"
+  },
+  "historical_overlap_audit": "/data/jiangbin/SOPPCL/model/evaluation/md_sop_vs_soppcl_three_endpoint_v1_20261009/overlap_and_independence_audit.json",
+  "inference": {
+    "batch_size": 10,
+    "device": "cuda:0",
+    "precision": "float32",
+    "raw_unclipped": true,
+    "smoothing": false,
+    "calibration": false,
+    "deterministic_algorithms": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "torch_threads": 2
+  },
+  "statistics": {
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 20261008,
+    "bootstrap_unit": "frozen_joint_homology_group_with_all_its_proteins",
+    "paired_direction": "new_v2.2_minus_reference",
+    "primary_delta": "protein_record_macro",
+    "secondary_delta": "equal_weight_group_means",
+    "sign_flip_replicates": 20000,
+    "sign_flip_seed": 20261107,
+    "exact_sign_flip_max_groups": 16,
+    "RMSE_comparisons": 24,
+    "comparison_definitions": "six matched-version pairs plus six times three historical references",
+    "p_adjustment": "Holm across all 24 prespecified RMSE comparisons",
+    "other_metric_CIs": "descriptive_unadjusted",
+    "single_training_seed": 20261007
+  },
+  "target_comparison_tolerance": 1e-07,
+  "score_compatibility_tolerance": 1e-08,
+  "control_prediction_tolerance": 1e-06,
+  "training_or_epoch_selection_allowed": false,
+  "historical_three_endpoint_summary_enabled": false,
+  "fresh_blind_test": false
+}

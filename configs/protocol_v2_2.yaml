@@ -1,0 +1,446 @@
+schema_version: '1.0'
+protocol_id: md_sop_v2_2_20261107
+plan_version: v2.2
+run_tag: v2_2_20261107
+status: scientific_recipe_frozen_dataset_binding_pending
+frozen_at: '2026-11-07T11:21:44.204237+08:00'
+change_policy: Any change after freeze requires a new protocol version and a new run tag.
+project:
+  name: MD-SOP
+  remote_host_alias: WQQ
+  project_root: /data/jiangbin/SOPPCL/MD-SOP
+  plan_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/MD-SOP v2.2 training plan.md
+  plan_sha256: b2a87b9d915cd9e7e8b821f3fb955fea72b16fd8b453eb05020682f8837e7755
+paths:
+  code_root: /data/jiangbin/SOPPCL/MD-SOP/code/v2_2_20261107
+  config_root: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107
+  data_root: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107
+  model_root: /data/jiangbin/SOPPCL/MD-SOP/model/v2_2_20261107
+  results_root: /data/jiangbin/SOPPCL/MD-SOP/results/v2_2_20261107
+  logs_root: /data/jiangbin/SOPPCL/MD-SOP/logs/v2_2_20261107
+  tmp_root: /data/jiangbin/SOPPCL/MD-SOP/tmp/v2_2_20261107
+  protected_reference_manifest: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/manifests/protected_reference_manifest.tsv
+  joint_split_manifest: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/manifests/joint_split_manifest_v2_2.tsv
+authoritative_inputs:
+  g0_joint_homology_members: /data/jiangbin/iRED/manifests/multisource/stage_g0_v1_20260801/joint_homology_members.tsv
+  g1_joint_role_by_record: /data/jiangbin/iRED/manifests/multisource/stage_g1_v1_20260801/joint_role_by_record.tsv
+  g1_joint_reference_records: /data/jiangbin/iRED/manifests/multisource/stage_g1_v1_20260801/joint_reference_records.tsv
+  multisource_dataset_release: /data/jiangbin/iRED/dataset/releases/dssop_multisource_dataset_v1_20260801
+  d1_train_ready_release: /data/jiangbin/DSSOP/data/releases/dssop_train_ready_v1_20260801
+  experimental10_benchmark_root: /data/jiangbin/SOPPCL/data/benchmarks/experimental10_three_model_comparison_v1_20260727
+  experimental10_benchmark_manifest: /data/jiangbin/SOPPCL/data/benchmarks/experimental10_three_model_comparison_v1_20260727/benchmark_manifest.tsv
+  experimental10_protein_manifest: /data/jiangbin/SOPPCL/data/benchmarks/experimental10_three_model_comparison_v1_20260727/protein_manifest.tsv
+  experimental10_residue_alignment: /data/jiangbin/SOPPCL/data/benchmarks/experimental10_three_model_comparison_v1_20260727/residue_alignment.tsv
+  esmc_cache_root: /data/jiangbin/SOPPCL/data/esmc_c_v1_20260929
+  soppe_raw1310_release: /data/jiangbin/SOPPCL/data/regression_v2_20260725/datasets/raw_esm_hmm1310_pseudo_v1_20260727_50f5120439ab
+  md_raw1310_release: /data/jiangbin/SOPPCL/data/md_ired_d1_v1_20260810/releases/raw_esm_hmm1310_md_ired_d1_v1_20260810_a9eaf3e5a44f
+  iRED_window_labels: /data/jiangbin/iRED/results/ired_full_production_v1_20260731/aggregate/labels_by_residue.parquet
+  frozen_v2_1_joint_split: /data/jiangbin/SOPPCL/MD-SOP/data/v2_1_20261007/manifests/joint_split_manifest_v2_1.tsv
+reference_protection:
+  source_manifest: protected_reference_manifest.tsv
+  expected_reference_records: 36
+  expected_experimental10_records: 10
+  expected_experimental_nmr26_records: 26
+  expected_unique_sequences: 35
+  expected_joint_homology_groups: 30
+  experimental10_expected_total_length: 982
+  experimental10_expected_valid_labels: 709
+  protect_exact_sequences: true
+  protect_joint_homology_groups: true
+  exclude_related_weak_records_from_training: true
+  exclude_related_weak_records_from_validation: true
+  exclude_related_weak_records_from_md_test: true
+  exclude_related_weak_records_from_soppe_test: true
+  allow_sequence_for_homology_audit: true
+  allow_sequence_for_frozen_feature_extraction: true
+  forbid_reference_labels_for:
+  - loss
+  - early_stopping
+  - window_selection
+  - source_weight_selection
+  - checkpoint_selection
+  - postprocessing_tuning
+  experimental10_use: final_historical_comparison_only
+  experimental_nmr26_use: reference_protection_only_in_v2_2
+homology_definition:
+  implementation: MMseqs2
+  frozen_version: 18.8cc5c
+  candidate_min_sequence_identity: 0.2
+  role_edge_min_sequence_identity: 0.3
+  min_query_coverage: 0.8
+  min_target_coverage: 0.8
+  coverage_mode: 0
+  sensitivity: 7.5
+  max_sequences: 10000
+  evalue: 1000.0
+  component_rule: undirected_connected_components
+  exact_sequences_forced_same_group: true
+  permitted_claim: No split leakage under the frozen 30 percent identity and bidirectional 80 percent coverage rule.
+joint_split_policy:
+  mode: reuse_frozen_v2_1_roles_without_reassignment
+  source_manifest: /data/jiangbin/SOPPCL/MD-SOP/data/v2_1_20261007/manifests/joint_split_manifest_v2_1.tsv
+  source_manifest_sha256: ef05bdaa7dc37399d4b4178f271588872b8df9edaeee3060d37d61874d5d9858
+  source_role_column: role_v2_1
+  derived_role_column: role_v2_2
+  recluster: false
+  resplit: false
+  restore_quarantine_records: false
+  use_label_values_for_assignment: false
+  require_record_sequence_group_role_mask_equivalence: true
+  required_audits:
+  - zero_joint_group_overlap_across_train_validation_test
+  - zero_exact_sequence_overlap_across_train_validation_test
+  - zero_reference_group_overlap_with_development
+  - consistent_role_within_each_joint_group
+features:
+  concatenate_order:
+  - esmc600_residue_embedding
+  - hmm_legacy30
+  output_dtype: float32
+  total_dimension: 1182
+  esmc:
+    model: biohub/ESMC-600M
+    revision: fcc9d36f5fff97d9bb69a36e3252de61cc78c968
+    residue_dimension: 1152
+    frozen: true
+    extraction_compute_dtype: bfloat16
+    cached_dtype: float32
+    whole_protein_pooling: false
+  hmm:
+    feature_id: HMM-v1-legacy30
+    residue_dimension: 30
+    hh_suite_version: 3.3.0
+    database: UniProt20_2013_03
+    hhblits_iterations: 2
+    preserve_legacy_parser_semantics: true
+  required_alignment_checks:
+  - authority_sequence_equals_feature_sequence
+  - fasta_length_equals_esmc_rows
+  - fasta_length_equals_hmm_rows
+  - fasta_length_equals_label_array_length
+  - residue_by_residue_identity
+  - finite_feature_values
+  - cross_source_identical_sequences_use_consistent_features
+sample_definition:
+  unit: one complete protein chain or source record
+  x_shape: '[L,1182]'
+  y_shape: '[L]'
+  preserve_unlabeled_real_residues_in_encoder_input: true
+  separate_label_and_padding_masks: true
+  loss_mask: qc_mask AND train_access AND NOT padding
+  nan_masking_by_multiplication_forbidden: true
+  average_labels_across_sources: false
+  encode_source_as_model_input: false
+model:
+  name: MD-SOP-BiLSTM-window-v2.2
+  input_layer_norm_dimension: 1182
+  projection:
+    output_dimension: 128
+    activation: GELU
+    dropout: 0.1
+  recurrent_backbone:
+    type: BiLSTM
+    full_sequence_once: true
+    layers: 2
+    hidden_size_per_direction: 256
+    bidirectional: true
+    inter_layer_dropout: 0.2
+    packed_sequences: true
+    output_dimension: 512
+  heads:
+    window_1:
+      window_size: 1
+      hidden_projection: Linear(512,128)
+      activation: GELU
+      dropout: 0.2
+      output: Linear(128,1)
+      expected_trainable_parameters: 2587069
+    window_15:
+      window_size: 15
+      left_context: 7
+      right_context: 7
+      boundary_padding: zero_hidden_vectors
+      implementation: Conv1d(512,128,kernel_size=15,padding=7)
+      activation: GELU
+      dropout: 0.2
+      output: Conv1d(128,1,kernel_size=1)
+      expected_trainable_parameters: 3504573
+  output_activation: null
+  training_prediction_clipping: false
+  main_metric_prediction_clipping: false
+  prediction_smoothing: false
+loss:
+  type: SmoothL1
+  beta: 0.05
+  residue_reduction: mean_over_valid_nonpadding_residues_per_record
+  record_reduction: mean_over_records
+  mixed_source_loss: 0.5 * mean_MD_record_loss + 0.5 * mean_SOPPE_record_loss
+  zero_valid_label_records_in_loss: false
+training:
+  primary_seed: 20261007
+  optional_confirmation_seeds: []
+  optional_seeds_must_be_decided_before_any_test_scores: true
+  default_ensemble: false
+  optimizer:
+    name: AdamW
+    learning_rate: 0.0001
+    weight_decay: 0.0001
+    betas:
+    - 0.9
+    - 0.999
+    eps: 1.0e-08
+  precision: float32
+  batch:
+    total_records: 32
+    md_only_md_records: 32
+    soppe_only_soppe_records: 32
+    mixed_md_records: 16
+    mixed_soppe_records: 16
+    dynamic_padding: true
+  virtual_epoch:
+    steps_formula: K = ceil(max(N_MD_train, N_SOPPE_train) / 32)
+    max_virtual_epochs: 100
+    max_optimizer_steps_formula: 100 * K
+    deterministic_independent_source_shuffle_cycles: true
+    drop_last: false
+    cycle_source_queue_to_fill_batch: true
+  gradient_clip_global_norm: 1.0
+  scheduler:
+    name: ReduceLROnPlateau
+    mode: min
+    patience: 3
+    factor: 0.5
+    min_learning_rate: 1.0e-06
+  early_stopping:
+    patience_virtual_epochs: 10
+    min_delta: 0.0001
+    selection_and_stopping_improvement_rules_are_separate: true
+  checkpoints:
+    save_best: true
+    save_last: true
+    best_definition: strict minimum of the experiment selection metric
+experiments:
+- id: A_MD_w1
+  train_sources:
+  - md_ired
+  window_size: 1
+  validation_sources:
+  - md_ired
+  selection_metric: md_validation_protein_record_macro_rmse
+- id: A_MD_w15
+  train_sources:
+  - md_ired
+  window_size: 15
+  validation_sources:
+  - md_ired
+  selection_metric: md_validation_protein_record_macro_rmse
+- id: B_SOPPE_w1
+  train_sources:
+  - soppe_legacy
+  window_size: 1
+  validation_sources:
+  - soppe_legacy
+  selection_metric: soppe_validation_protein_record_macro_rmse
+- id: B_SOPPE_w15
+  train_sources:
+  - soppe_legacy
+  window_size: 15
+  validation_sources:
+  - soppe_legacy
+  selection_metric: soppe_validation_protein_record_macro_rmse
+- id: C_MIX_w1
+  train_sources:
+  - md_ired
+  - soppe_legacy
+  window_size: 1
+  validation_sources:
+  - md_ired
+  - soppe_legacy
+  selection_metric: 0.5 * md_validation_protein_record_macro_rmse + 0.5 * soppe_validation_protein_record_macro_rmse
+- id: C_MIX_w15
+  train_sources:
+  - md_ired
+  - soppe_legacy
+  window_size: 15
+  validation_sources:
+  - md_ired
+  - soppe_legacy
+  selection_metric: 0.5 * md_validation_protein_record_macro_rmse + 0.5 * soppe_validation_protein_record_macro_rmse
+paired_initialization:
+  same_window_across_source_routes: true
+  common_backbone_across_windows: true
+  register_separate_random_streams:
+  - model_initialization
+  - md_shuffle
+  - soppe_shuffle
+  - dropout
+evaluation:
+  open_test_labels_only_after_all_selected_checkpoints_are_frozen: true
+  endpoints:
+  - md_test
+  - soppe_test
+  - experimental10
+  required_for_every_experiment: true
+  experimental10:
+    expected_proteins: 10
+    expected_full_sequence_residues: 982
+    expected_valid_labels: 709
+    use_frozen_historical_mask: true
+    use_same_scorer_as_historical_comparison: true
+  primary_aggregation: protein_record_macro
+  metrics:
+  - RMSE
+  - MAE
+  - PCC
+  - Spearman
+  - bias
+  supplemental_metrics:
+  - pooled_RMSE
+  - pooled_PCC
+  - prediction_outside_0_1_fraction
+  - prediction_to_target_standard_deviation_ratio
+  - unique_sequence_aggregated_MD_error
+  undefined_correlation: missing_with_reported_count; never replace by zero
+  combine_scores_across_label_domains: false
+  use_test_scores_for_model_changes: false
+  historical_models_for_experimental10:
+  - original_SOPPCL
+  - mu64_BiLSTM
+  - raw1310_BiLSTM
+  md_test_primary_target: md_ired_5tauc_windowmean_v2_2
+  md_test_auxiliary_target: md_ired_full100ns_three_replica_mean_v2_1
+  require_v2_1_v2_2_by_full100ns_5tauc_two_by_two: true
+  same_target_and_mask_required_for_version_metric_differences: true
+  v2_1_predictions_read_only_no_reselection: true
+  scores_computed_at_step1: false
+  historically_used_benchmarks_not_new_blind_test: true
+access_control:
+  training_process_may_read_roles:
+  - train
+  - validation
+  training_process_forbidden_roles:
+  - test
+  - reference
+  - quarantine_reference_related
+  training_process_must_not_load_test_label_files: true
+  final_evaluator_uses_explicit_endpoint_whitelists: true
+step1_acceptance:
+  required_experiment_ids:
+  - A_MD_w1
+  - A_MD_w15
+  - B_SOPPE_w1
+  - B_SOPPE_w15
+  - C_MIX_w1
+  - C_MIX_w15
+  required_reference_counts:
+    experimental_nmr: 26
+    historical_test: 10
+  require_reference_sequence_hash_recalculation: true
+  require_experimental10_id_and_length_match: true
+  require_experimental10_sequence_and_chain_match: true
+  require_external_input_hashes_in_audit: true
+  require_protocol_and_manifest_sha256: true
+  next_step_only_after_pass: step2_publish_5tauc_labels_v2_2
+execution_seed_policy:
+  policy: single_seed
+  seeds:
+  - 20261007
+  ensemble: false
+  extra_seed_search: false
+  reference_decision: /data/jiangbin/SOPPCL/MD-SOP/data/v2_1_20261007/audits/step6_pretest/seed_and_test_opening_decision.json
+md_label_policy:
+  label_version: md_ired_5tauc_windowmean_v2_2
+  replacement_endpoints:
+  - md_train
+  - md_validation
+  - md_test
+  unchanged_endpoints:
+  - soppe_train
+  - soppe_validation
+  - soppe_test
+  - experimental10
+  definition: mean_over_replicas_of_mean_over_complete_nonoverlapping_5tauc_windows
+  replicas:
+  - R1
+  - R2
+  - R3
+  replica_weighting: equal
+  within_replica_window_weighting: equal
+  columns:
+  - window_s2_mean_r1
+  - window_s2_mean_r2
+  - window_s2_mean_r3
+  require_all_three_finite: true
+  skip_nan: false
+  accumulation_dtype: float64
+  stored_dtype: float32
+  fallback_to_full100ns: false
+  first_window_only: false
+  treat_windows_as_independent_training_samples: false
+  square_target_again: false
+  target_normalization: none
+  reuse_frozen_tau_c: true
+  window_multiplier_tau_c: 5.0
+  window_quantum_ps: 100
+  window_boundary: half_open
+  omit_incomplete_tail: true
+  final_100ns_endpoint_excluded: true
+  preserve_existing_qc_masks_and_positions: true
+  new_qc_thresholds: false
+  minimum_windows_per_replica: 1
+  new_protein_records: false
+  expected_md_records: 1359
+  expected_valid_md_residue_targets: 188991
+  tau_c_window_is_not_regression_head_window: true
+  source_files:
+  - path: /data/jiangbin/iRED/results/ired_full_production_v1_20260731/aggregate/labels_by_residue.parquet
+    sha256: f81d5e226ecba8a34b615b6cc7846d951fee80724794017584f2edd99d7faba9
+  - path: /data/jiangbin/iRED/results/ired_full_production_v1_20260731/aggregate/residue_s2_all_runs.parquet
+    sha256: 6b33fbdb360763cd3b4f1459fb94af8e6136677ab4ca05accb8ef5394997912c
+  - path: /data/jiangbin/iRED/results/ired_full_production_v1_20260731/aggregate/run_qc.parquet
+    sha256: ac9628a7f4757e3505cad2f13101f39e537bd5efb589a9f25153927b0dccab2e
+  - path: /data/jiangbin/iRED/manifests/ired/ired_full_production_v1_20260731/selection.tsv
+    sha256: 9af548fa6bd143e18f0f81054513a1d84c6dd1eb74a7f43adc586d4a70473b4a
+frozen_reference_registry:
+  path: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/manifests/v2_1_reference_registry.tsv
+  sha256: 412f91ecce1c77244a0db02983dd978932ee045db29a8eddab5363e48a666e79
+  asset_count: 4265
+  label_packages: 4103
+  prediction_tables: 13
+  large_feature_array_policy: freeze_existing_indices_and_recorded_hashes_not_full_array_rescan
+data_release_binding:
+  status: pending_steps_2_3
+  required_before_training: true
+  binding_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/data_binding_v2_2.yaml
+  resolved_training_config_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/resolved_train_v2_2.yaml
+  immutable_recipe_files:
+  - /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/protocol_v2_2.yaml
+  - /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/common_train_v2_2.yaml
+  policy: Do not edit frozen scientific recipes; add a separately hashed data binding after data acceptance, then
+    resolve a runtime config.
+change_control:
+  permitted_scientific_change: MD label definition including matching MD validation/test targets
+  must_remain_equal:
+  - sample_ids
+  - sequences
+  - homology_groups
+  - roles
+  - qc_masks
+  - features
+  - model_architecture
+  - initialization_parameters
+  - random_streams
+  - optimizer
+  - loss
+  - scheduler
+  - early_stopping
+  - maximum_update_budget
+  retrain_all_six_from_untrained_paired_initialization: true
+  b_soppe_routes_are_negative_controls: true
+  raw_test_predictions:
+    clip: false
+    smooth: false
+    sigmoid: false
+    calibrate: false
+  do_not_use_tests_to_change_protocol: true
+  historical_benchmark_reuse_disclosed: true

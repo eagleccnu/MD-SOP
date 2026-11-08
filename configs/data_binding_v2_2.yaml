@@ -1,0 +1,30 @@
+schema_version: '1.0'
+model_version: v2.2
+run_tag: v2_2_20261107
+status: data_bound_pending_step4_acceptance
+training_allowed: false
+scientific_recipe:
+  protocol_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/protocol_v2_2.yaml
+  protocol_sha256: 58241e47ea718e2ca9226bd05f053b89290782175548181b2a9589e3d2843a31
+  common_train_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/common_train_v2_2.yaml
+  common_train_sha256: 7849f451049722f7b77f6d340afb1410c2177ff2e649500f29dadede20dc784b
+label_release_path: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/label_releases/md_ired_5tauc_windowmean_v2_2/label_release_manifest_v2_2.json
+label_release_sha256: 11d9f80b5d290c923c121d81665c6c71add864eaf816ec1465fb52c7574f4975
+label_targets_parquet_sha256: 9543360784b10f323d55e04a13c4a64b883719c2a03eb2f7a9c27c04c2ea61aa
+trainer_manifest: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/development/manifests/trainer_access_manifest.tsv
+trainer_manifest_sha256: bde765b3ff9a7689255cae6fbb529c390636e2f8121cc38afb744fa656da234f
+dataset_index: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/manifests/step3_dataset_index.tsv
+dataset_index_sha256: a814aa59c3a3b2223ab9271a7f634b0840edb8910144bbcce250105dc4a7f511
+feature_index: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/feature_index.tsv
+feature_index_sha256: c6d036f1279d9b8d77d4f73f61e0503c333704299691f92f6c0236ac18b6d47b
+data_acceptance_path: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/audits/step3_data_preparation/step3_data_acceptance_v2_2_20261107.json
+data_acceptance_sha256: b60e2c4c05a1ad86a8f19b2958c4749836fe337c29d919cf9fbfad6dec1e65db
+data_access_policy: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/development/manifests/data_access_policy_v2_2.json
+data_access_policy_sha256: fe09a74863efc4d4f999e494666e9aa214a173a96602c15862deda06bd187832
+evaluator_whitelist: /data/jiangbin/SOPPCL/MD-SOP/data/v2_2_20261107/evaluation/final_evaluator_whitelist.json
+evaluator_whitelist_sha256: 118fabfe27b070a22a52d3850522792477a6fb30b9c6375147bb783fe1164879
+model_acceptance_sha256: null
+model_acceptance_status: pending_step4
+step4_resolution_policy: Keep this data snapshot immutable. Add a separate model_binding_v2_2.yaml with actual acceptance
+  hashes, then resolve runtime config from scientific recipe + data binding + model binding.
+resolved_training_config_path: /data/jiangbin/SOPPCL/MD-SOP/config/v2_2_20261107/resolved_train_v2_2.yaml

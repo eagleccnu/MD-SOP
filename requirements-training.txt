@@ -1,0 +1,7 @@
+# Frozen core packages, not a lock of every OS/CUDA/transitive dependency.
+-r requirements-inference.txt
+scipy==1.12.0
+pandas==2.2.2
+matplotlib==3.9.2
+PyYAML==6.0.2
+pyarrow==17.0.0
